@@ -14,7 +14,7 @@ The version of the parse.json file.
 
 #### author
 
-The author of the parse.json file.
+The author of the parse.json file. 
 
 #### last_updated
 
