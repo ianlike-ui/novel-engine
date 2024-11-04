@@ -8,6 +8,43 @@ This is the parse.json file for the novel engine. It contains all the necessary 
 
 ### Structure
 
+#### version
+
+The version of the parse.json file.
+
+#### author
+
+The author of the parse.json file.
+
+#### last_updated
+
+The date when the parse.json file was last updated.
+
+#### description
+
+A brief description of the parse.json file.
+
+#### main
+
+This is an array of objects that contains all the necessary information for the engine to work.
+
+Each object in the main array represents a website or a platform that the engine can work with.
+
+The object contains the following properties:
+
+- name: The name of the website or platform.
+- base_Url: The base URL of the website or platform.
+- search: This object contains the necessary information for the engine to search for books on the website or platform.
+- nextSearch: This object contains the necessary information for the engine to search for the next page of books on the website or platform.
+- specific: This object contains the necessary information for the engine to get the details of a specific book on the website or platform.
+- chapterList: This object contains the necessary information for the engine to get the list of chapters of a specific book on the website or platform.
+- content: This object contains the necessary information for the engine to get the content of a specific chapter on the website or platform.
+- recommendations: This object contains the necessary information for the engine to get the list of recommended books on the website or platform.
+- categories: This object contains the necessary information for the engine to get the list of categories on the website or platform.
+- categorieBooks: This object contains the necessary information for the engine to get the list of books in a specific category on the website or platform.
+
+### Example
+
 ```json
 {
     "version": "1.0.0",
