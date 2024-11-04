@@ -1,0 +1,126 @@
+{
+    "version": "1.0.0",
+    "author": "Ian",
+    "last_updated": "2024-10-25",
+    "description": "This is the parse.json file for the novel engine.",
+    "main": [
+        {
+            "name": "kpkpo",
+            "base_Url": "https://novelapi-tn.kpkpo.com",
+            "search": {
+                "method": "GET",
+                "g_data": [
+                    "keyword",
+                    "return '';"
+                ],
+                "g_searchUrl": [
+                    "keyword",
+                    "data",
+                    "return {searchUrl: 'https://novelapi-tn.kpkpo.com/h5/search?word='+keyword , data: ''};"
+                ],
+                "h_data": [
+                    "$",
+                    "return $('.weui-cell.favorite').map((index, element) => {const title = $(element).find('.weui-flex__item').first().text();const author = $(element).find('.type span').first().text();const imgUrl = $(element).find('.cover img').attr('src');const description = $(element).find('.desc span').text();const score = $(element).find('.score').text();const bookUrl = $(element).find('a').attr('href');return {title,author,imgUrl,description,score,bookUrl,};}).get();"
+                ]
+            },
+
+            "specific": {
+                "method": "GET",
+                "g_data": [
+                    "keyword",
+                    "return '';"
+                ],
+                "g_searchUrl": [
+                    "url",
+                    "data",
+                    "return {searchUrl: 'https://novelapi-tn.kpkpo.com'+url,data: ''};"
+                ],
+                "h_data": [
+                    "$",
+                    "const similiarBooks = [];$('.weui-flex.books-list .weui-flex__item').each((index, element) => {similiarBooks.push({title: $(element).find('h3').text().trim(),bookUrl: $(element).find('a').attr('href'),author: '',description: '', imgUrl: $(element).find('img').attr('src'),score: $(element).find('.score').text().trim()});});return {name: 'kpkpo',title: $('.card .book-info .info h3').text().trim(),author: $('.upload').text().replace(' 著', '').trim(),description: $('.desc').text().trim(), imgUrl: $('.cover img').attr('src'), score: $('.card .book-info .score-wrap .score').text().trim(), chapterUrl: $('.catalog .chapter a').attr('href'),similiarBooks: similiarBooks};"
+                ]
+            },
+            "chapterList": {
+                "method": "GET",
+                "g_data": [
+                    "keyword",
+                    "return '';"
+                ],
+                "g_searchUrl": [
+                    "url",
+                    "data",
+                    "return {searchUrl: 'https://novelapi-tn.kpkpo.com'+url,data: ''};"
+                ],
+                "h_data": [
+                    "$",
+                    "const chapters = [];var chapter_id = 0;$('.child-title li a').each((index, element) => {const title = $(element).text().trim();const href = $(element).attr('href');chapters.push({id: chapter_id,title: title,url: href});chapter_id++;});const result = {name: 'kpkpo',chapters: chapters};return result;"
+                ]
+            },
+            "content": {
+                "method": "GET",
+                "g_data": [
+                    "keyword",
+                    "return '';"
+                ],
+                "g_searchUrl": [
+                    "url",
+                    "data",
+                    "return {searchUrl: 'https://novelapi-tn.kpkpo.com'+url,data: ''};"
+                ],
+                "h_data": [
+                    "$",
+                    "const content = $('article.js-article').text().trim();const title = $('h4.title').text().trim();const data = {name: 'kpkpo',title: title,content: content};return data;"
+                ]
+            },
+            "recommendations": {
+                "method": "GET",
+                "g_data": [
+                    "keyword",
+                    "return '';"
+                ],
+                "g_searchUrl": [
+                    "url",
+                    "data",
+                    "return {searchUrl: 'https://novelapi-tn.kpkpo.com/h5/',data: ''};"
+                ],
+                "h_data": [
+                    "$",
+                    "const recommendations = [];$('.weui-cell').each((index, element) => {const title = $(element).find('h3').text().trim();const bookUrl = $(element).find('a').attr('href');const author = $(element).find('.author').text().trim();const description = $(element).find('.desc').text().trim();const imgUrl = $(element).find('img').attr('src');const score = $(element).find('.score').text().trim();if (title && bookUrl) {recommendations.push({title,bookUrl,author,description,imgUrl,score,});}});const data = {name: 'kpkpo',recommendations};return data;"
+                ]
+            },
+            "categories": {
+                "method": "GET",
+                "g_data": [
+                    "keyword",
+                    "return ;"
+                ],
+                "g_searchUrl": [
+                    "url",
+                    "data",
+                    "return url;"
+                ],
+                "h_data": [
+                    "data",
+                    "return data;"
+                ]
+            },
+            "categorieBooks": {
+                "method": "GET",
+                "g_data": [
+                    "keyword",
+                    "return ;"
+                ],
+                "g_searchUrl": [
+                    "url",
+                    "data",
+                    "category",
+                    "return url;"
+                ],
+                "h_data": [
+                    "data",
+                    "return data;"
+                ]
+            }
+        }
+    ]
+}
