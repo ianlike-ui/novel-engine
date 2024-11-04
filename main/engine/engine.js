@@ -9,7 +9,7 @@ class Engine {
 
     // 初始化源，遍历解析数据的主字段
     for (var each in this.parse.main){
-        this.sources[each] = new Source(this.parse.main[each]);
+        this.sources[this.parse.main[each].name] = new Source(this.parse.main[each]);
     }
     this.disableSources = [];
   }
@@ -121,6 +121,6 @@ export default Engine;
 
 var engine = new Engine();
 
-const i = engine.globalSearch('修仙')[0]['results']
+const i = engine.globalSpecific('kpkpo','/h5/book-id-75649')
 
 i.then((result) => {console.log(result)})   
